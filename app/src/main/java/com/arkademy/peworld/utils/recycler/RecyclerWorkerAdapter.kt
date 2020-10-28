@@ -1,6 +1,7 @@
 package com.arkademy.peworld.utils.recycler
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -29,10 +30,16 @@ class RecyclerWorkerAdapter(val items: ArrayList<WorkerModel>, val listener: OnC
             .placeholder(R.drawable.ic_user).into(holder.binding.ivProfile)
         holder.binding.tvNameProfile.text = item.name
         holder.binding.tvRoleJob.text = item.title
+        if (item.skill != "Not Any Skill") {
         var skill = item.skill.split(",")
-        holder.binding.tvSkill1.text = skill[0]
-        holder.binding.tvSkill2.text = skill[1]
-        holder.binding.tvSkillPlus.text = "${skill.size - 2}+"
+            holder.binding.tvSkill1.text = skill[0]
+            holder.binding.tvSkill2.text = skill[1]
+            holder.binding.tvSkillPlus.text = "${skill.size - 2}+"
+        } else {
+            holder.binding.tvSkillPlus.text = item.skill
+            holder.binding.tvSkill1.visibility = View.GONE
+            holder.binding.tvSkill2.visibility = View.GONE
+        }
         holder.binding.container.setOnClickListener {
             listener.OnClick(item.idWorker)
         }
