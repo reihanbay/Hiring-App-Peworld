@@ -25,7 +25,8 @@
 
         <TextView
             android:id="@+id/tv_name_profile"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:textAlignment="center"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/open_sans_semibold"
@@ -53,14 +54,14 @@
             android:id="@+id/ll_skill_view"
             android:layout_width="128dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="90dp"
             android:columnCount="3"
             android:maxWidth="128dp"
             android:rowCount="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_role_job">
+            app:layout_constraintTop_toBottomOf="@id/iv_profile">
 
             <TextView
                 android:id="@+id/tv_skill1"

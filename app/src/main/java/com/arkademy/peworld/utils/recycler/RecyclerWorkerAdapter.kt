@@ -26,6 +26,7 @@ class RecyclerWorkerAdapter(val items: ArrayList<WorkerModel>, val listener: OnC
 
     override fun onBindViewHolder(holder: WorkerViewHolder, position: Int) {
         val item = items[position]
+        holder.binding.ivProfile.clipToOutline
         Glide.with(holder.itemView).load("http://34.229.16.81:8008/uploads/${item.image}")
             .placeholder(R.drawable.ic_user).into(holder.binding.ivProfile)
         holder.binding.tvNameProfile.text = item.name
@@ -33,8 +34,13 @@ class RecyclerWorkerAdapter(val items: ArrayList<WorkerModel>, val listener: OnC
         if (item.skill != "Not Any Skill") {
         var skill = item.skill.split(",")
             holder.binding.tvSkill1.text = skill[0]
-            holder.binding.tvSkill2.text = skill[1]
-            holder.binding.tvSkillPlus.text = "${skill.size - 2}+"
+            if (skill.size > 1) {
+                holder.binding.tvSkill2.text = skill[1]
+                holder.binding.tvSkillPlus.text = "${skill.size - 2}+"
+            } else {
+                holder.binding.tvSkillPlus.visibility = View.GONE
+                holder.binding.tvSkill2.visibility = View.GONE
+            }
         } else {
             holder.binding.tvSkillPlus.text = item.skill
             holder.binding.tvSkill1.visibility = View.GONE
