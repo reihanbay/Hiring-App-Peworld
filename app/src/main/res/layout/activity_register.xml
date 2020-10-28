@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_gray"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="40dp"
+        tools:context=".register.RegisterActivity">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logo_second"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/purple_500" />
+
+
+        <TextView
+            android:id="@+id/tv_header_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="Register"
+            android:textSize="32dp"
+            android:textColor="@color/black_gray"
+            app:layout_constraintTop_toBottomOf="@id/iv_logo" />
+
+        <TextView
+            android:id="@+id/tv_desc_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="Make your personal profil!"
+            android:textColor="@color/gray_1"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/tv_header_register"
+            app:layout_constraintTop_toBottomOf="@id/tv_header_register" />
+
+        <TextView
+            android:id="@+id/tv_header_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="Name"
+            android:textColor="@color/gray_2"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/tv_desc_register"
+            app:layout_constraintTop_toBottomOf="@id/tv_desc_register" />
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Masukan Nama Lengkap"
+            android:textColor="@color/black_gray"
+            android:padding="15dp"
+            android:inputType="text"
+            android:textColorHint="@color/gray_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_header_name" />
+
+        <TextView
+            android:id="@+id/tv_header_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="Email"
+            android:textColor="@color/gray_2"
+            android:textSize="12sp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="@id/et_name"
+            app:layout_constraintTop_toBottomOf="@id/et_name" />
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Masukan Alamat Email"
+            android:padding="15dp"
+            android:textColor="@color/black_gray"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/gray_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_header_email" />
+        <TextView
+            android:id="@+id/tv_header_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="No.Hp"
+            android:textColor="@color/gray_2"
+            android:textSize="12sp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="@id/et_email"
+            app:layout_constraintTop_toBottomOf="@id/et_email" />
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Masukan nomor handphone"
+            android:padding="15dp"
+            android:textColor="@color/black_gray"
+            android:inputType="phone"
+            android:textColorHint="@color/gray_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_header_phone" />
+        <TextView
+            android:id="@+id/tv_header_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="Password"
+            android:textColor="@color/gray_2"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/et_phone"
+            app:layout_constraintTop_toBottomOf="@id/et_phone" />
+        <TextView
+            android:id="@+id/tv_header_confirm_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="Konfirmasi Password"
+            android:textColor="@color/gray_2"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/lyt_et_password"
+            app:layout_constraintTop_toBottomOf="@id/lyt_et_password" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lyt_et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_text"
+            app:boxStrokeWidth="0dp"
+            android:layout_marginTop="5dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:placeholderTextColor="@color/gray_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_header_password"
+            app:placeholderText="Masukan Password"
+            app:passwordToggleTint="@color/gray_1"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:background="@android:color/transparent"
+                android:padding="15dp"
+                android:textColor="@color/black_gray"
+                android:textColorHint="@color/gray_1" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lyt_et_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edit_text"
+            app:boxStrokeWidth="0dp"
+            android:layout_marginTop="5dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:placeholderText="Masukan Konfirmasi Password"
+            app:placeholderTextColor="@color/gray_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:passwordToggleTint="@color/gray_1"
+            app:layout_constraintTop_toBottomOf="@id/tv_header_confirm_password"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:background="@android:color/transparent"
+                android:padding="15dp"
+                android:textColor="@color/black_gray"
+                android:textColorHint="@color/gray_1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/orange_primary"
+            android:fontFamily="@font/open_sans_bold"
+            android:padding="15dp"
+            android:text="Daftar"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:cornerRadius="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lyt_et_confirm_password" />
+
+        <LinearLayout
+            android:id="@+id/ll_have_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_register">
+
+            <TextView
+                android:id="@+id/tv_have_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Anda Sudah Punya Akun ?"
+                android:textColor="@color/black_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_toLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4dp"
+                android:text="Masuk Disini"
+                android:textColor="@color/orange_primary"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

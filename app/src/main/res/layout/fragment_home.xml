@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".home.HomeFragment">
+
+            <FrameLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/component_header" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginBottom="30dp">
+
+                    <TextView
+                        android:id="@+id/tv_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:text="Sen, 21 April 2020"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:text="Hai, Muhammad!"
+                        android:textColor="@color/white"
+                        android:textSize="26sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_time" />
+
+                    <ImageView
+                        android:id="@+id/iv_notify"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_bell"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_jobWeb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Web Developer"
+                android:textColor="@color/black_gray2"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/header" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_web"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                app:layout_constraintStart_toStartOf="@id/tv_jobWeb"
+                app:layout_constraintTop_toBottomOf="@id/tv_jobWeb" />
+            <TextView
+                android:id="@+id/tv_emptyWorkerWeb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/black_gray"
+                android:visibility="gone"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_jobWeb"
+                app:layout_constraintBottom_toTopOf="@id/tv_jobAndroid"
+                android:text="Tidak Ada Pekerja"/>
+            <ProgressBar
+                android:id="@+id/progress_bar_WorkerWeb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/tv_jobWeb"
+                app:layout_constraintBottom_toTopOf="@id/tv_jobAndroid"
+               />
+            <TextView
+                android:id="@+id/tv_jobAndroid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Android Developer"
+                android:textColor="@color/black_gray2"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/rv_web" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_android"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                app:layout_constraintStart_toStartOf="@id/tv_jobWeb"
+                app:layout_constraintTop_toBottomOf="@id/tv_jobAndroid" />
+
+            <TextView
+                android:id="@+id/tv_emptyWorkerAndroid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tidak Ada Pekerja"
+                android:textColor="@color/black_gray"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_jobAndroid" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar_WorkerAndroid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_jobAndroid" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
