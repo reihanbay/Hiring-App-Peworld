@@ -17,6 +17,5 @@ interface HireService {
     suspend fun patchConfirm(
             @Path("id") idHire: Int,
             @Field("statusConfirm") statusConfirm: String?,
-//            @Field("dateConfirm") dateConfirm: String?,
     ) : PatchHireResponse
 }

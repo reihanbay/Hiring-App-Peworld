@@ -31,12 +31,12 @@ class PortfolioViewModel: ViewModel(), CoroutineScope{
                 }
             }
             if (response is PortfolioResponse) {
-                if(response.data == null) {
+                if(response.data == null || response.message == "There is no Portfolio on list") {
                     isEmptyLiveData.value = true
                 } else {
                     isEmptyLiveData.value = false
                     val list = response.data.map {
-                        PortfolioModel(it.idPortfolio, it.imagePortfolio)
+                        PortfolioModel(it.idPortfolio, it.imagePortfolio, it.linkRepo, it.typePortfolio,it.namePortfolio, it.idWorker)
                     }
                     portfolioLiveData.value = list
                 }

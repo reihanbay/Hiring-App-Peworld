@@ -10,7 +10,25 @@
         android:background="@color/background_gray"
             android:paddingBottom="20dp"
         tools:context=".profile.ProfileWorkerActivity">
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:elevation="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@color/purple_500"
+                android:theme="@style/AppTheme.AppBarOverlay">
 
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    />
+            </com.google.android.material.appbar.AppBarLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_profile_data"
             android:layout_width="match_parent"
@@ -125,9 +143,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_summary" />
 
-            <TextView
-                android:id="@+id/tv_skill"
-                android:layout_width="match_parent"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_skill"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -138,32 +156,26 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/open_sans_regular"/>
-            <!--            <GridView-->
-            <!--                android:id="@+id/gridview"-->
-            <!--                app:layout_constraintTop_toBottomOf="@id/tv_skill_header"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                android:layout_marginHorizontal="20dp"-->
-            <!--                android:layout_marginTop="20dp"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="match_parent"-->
-            <!--                android:background="#FFF5F5F5"-->
-            <!--                android:columnWidth="100dp"-->
-            <!--                android:gravity="left"-->
-            <!--                android:horizontalSpacing="10dp"-->
-            <!--                android:numColumns="auto_fit"-->
-            <!--                android:stretchMode="spacingWidth"-->
-            <!--                android:verticalSpacing="20dp"-->
-            <!--                >-->
-
-            <!--            </GridView>-->
-
+            <TextView
+                android:id="@+id/tv_skill"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Haven't Skill"
+                android:textSize="14sp"
+                android:visibility="gone"
+                android:textColor="@color/gray_2"
+                android:fontFamily="@font/open_sans_semibolditalic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_skill_header" />
             <ImageView
                 android:id="@+id/iv_ic_mail"
                 android:src="@drawable/ic_mail"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="52dp"
                 android:layout_marginStart="20dp"
-                app:layout_constraintTop_toBottomOf="@id/tv_skill"
+                app:layout_constraintTop_toBottomOf="@id/rv_skill"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -256,6 +268,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="20dp"
                 android:background="@drawable/bg_profile"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:elevation="1dp"
                 android:orientation="vertical">
 

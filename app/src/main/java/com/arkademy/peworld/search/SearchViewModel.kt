@@ -20,19 +20,19 @@ class SearchViewModel : ViewModel(), CoroutineScope {
         this.service = service
     }
 
-    fun getSearch(){
+    fun getSearch(search: String?, sort: String?, order: String?){
         launch {
             isProgressLiveData.value = true
             val response = withContext(Dispatchers.IO) {
                 try {
-                    service.getAllWorker()
+                    service.getAllWorker(search, sort, order)
                 } catch (e: Throwable) {
                     e.printStackTrace()
                 }
             }
             if (response is GetWorkerResponse) {
                 val list = response.data.map {
-                    WorkerModel(it.idWorker, it.image.orEmpty(),it.name.orEmpty(), it.title.orEmpty(), it.skill.orEmpty())
+                    WorkerModel(it.idWorker, it.image.orEmpty(),it.name.orEmpty(), it.title.orEmpty(), it.statusJob.orEmpty(), it.city.orEmpty(), it.skill.orEmpty())
                 }
                 workerLiveData.value = list
             }

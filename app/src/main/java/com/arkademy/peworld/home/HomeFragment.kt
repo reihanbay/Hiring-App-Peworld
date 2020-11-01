@@ -20,6 +20,9 @@ import com.arkademy.peworld.utils.api.ApiClient
 import com.arkademy.peworld.utils.api.service.WorkerService
 import com.arkademy.peworld.utils.model.WorkerModel
 import com.arkademy.peworld.utils.recycler.RecyclerWorkerAdapter
+import com.arkademy.peworld.utils.sharedpreference.Constants
+import com.arkademy.peworld.utils.sharedpreference.PreferenceHelper
+import java.text.DateFormat
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -28,6 +31,7 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
     private lateinit var recyclerViewAndroid : RecyclerWorkerAdapter
     private lateinit var recyclerViewWeb : RecyclerWorkerAdapter
+    private lateinit var sharedPref : PreferenceHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -43,8 +47,13 @@ class HomeFragment : Fragment() {
         }
         viewModel.getAndroid()
         viewModel.getWeb()
-        subscribeLiveData()
+        sharedPref = PreferenceHelper(activity as AppCompatActivity)
 
+        val c = Calendar.getInstance()
+        val current = DateFormat.getDateInstance(DateFormat.FULL).format(c.time)
+        binding.tvTime.text = current
+        binding.tvName.text = "Hai, ${this.sharedPref.getString(Constants.USERNAME)?.capitalize()}"
+        subscribeLiveData()
         setUpRecyclerView()
         binding.ivNotify.setOnClickListener { startActivity(Intent(activity, NotifyActivity:: class.java)) }
         return binding.root

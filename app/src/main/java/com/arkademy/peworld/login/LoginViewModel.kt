@@ -2,8 +2,6 @@ package com.arkademy.peworld.login
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.arkademy.peworld.utils.api.response.CheckProfileResponse
-import com.arkademy.peworld.utils.api.response.GetWorkerByIdResponse
 import com.arkademy.peworld.utils.api.response.GetWorkerResponse
 import com.arkademy.peworld.utils.api.response.loginResponse
 import com.arkademy.peworld.utils.api.service.AccountService

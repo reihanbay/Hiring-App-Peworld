@@ -26,8 +26,33 @@ class RecyclerHireAdapter(val items : ArrayList<HireModel>, val listener: OnClic
                 .placeholder(R.drawable.ic_company).into(holder.binding.ivCompany)
         holder.binding.tvCompany.text = item.recruiter
         holder.binding.tvProjectJob.text = item.projectJob
-        holder.binding.tvCreateJob.text = item.createdAt
-        holder.binding.ivCompany.clipToOutline
+        val time = item.createdAt
+        var date = ""
+        for (a in 0..9) {
+            date += time[a]
+        }
+        val getDate = date.split("-")
+        val day = getDate[2]
+        val month = getDate[1]
+        val year = getDate[0]
+
+        when(month){
+            "01" -> "January"
+            "02" -> "February"
+            "03" -> "March"
+            "04" -> "April"
+            "05" -> "May"
+            "06" -> "June"
+            "07" -> "July"
+            "08" -> "Agustus"
+            "09" -> "September"
+            "10" -> "Oktober"
+            "11" -> "November"
+            "12" -> "Desember"
+        }
+
+        holder.binding.tvCreateJob.text = "$day-$month-$year"
+        holder.binding.ivCompany.clipToOutline = true
         holder.binding.container.setOnClickListener {
             listener.OnClick(item.idHire)
         }

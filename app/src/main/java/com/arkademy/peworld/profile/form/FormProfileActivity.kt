@@ -16,7 +16,6 @@ import androidx.annotation.NonNull
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.arkademy.peworld.MainActivity
 import com.arkademy.peworld.R
 import com.arkademy.peworld.databinding.ActivityFormProfileBinding
 import com.arkademy.peworld.login.LoginActivity

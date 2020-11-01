@@ -1,5 +1,6 @@
 package com.arkademy.peworld.hire
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -19,11 +20,24 @@ class DetailHireActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDetailHireBinding
     private lateinit var viewModel: DetailHireViewModel
     private lateinit var sharedPref: PreferenceHelper
+
+    companion object{
+        const val CODE_CONFIRM = 1001
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_hire)
         sharedPref = PreferenceHelper(this)
         viewModel = ViewModelProvider(this).get(DetailHireViewModel::class.java)
+
+        val toolbar = binding.toolbarMain
+        this.setSupportActionBar(toolbar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setHomeButtonEnabled(true)
+        toolbar.setNavigationOnClickListener { onBackPressed() }
+
         val service = ApiClient.getApiClientToken(this)?.create(HireService::class.java)
         if (service != null) {
             viewModel.setService(service)
@@ -34,10 +48,14 @@ class DetailHireActivity : AppCompatActivity() {
 
         binding.btnDecline.setOnClickListener {
             viewModel.confirmHire(id.toInt(),"rejected")
+            setResult(Activity.RESULT_OK)
+            finish()
         }
 
         binding.btnSubmit.setOnClickListener {
             viewModel.confirmHire(id.toInt(),"accepted")
+            setResult(Activity.RESULT_OK)
+            finish()
         }
     }
 
@@ -79,9 +97,6 @@ class DetailHireActivity : AppCompatActivity() {
 
         viewModel.patchHireLiveData.observe(this, Observer {
             Toast.makeText(this, it.data?.statusConfirm, Toast.LENGTH_SHORT).show()
-        })
-
-        viewModel.isSuccessLiveData.observe(this, Observer {
         })
     }
 }

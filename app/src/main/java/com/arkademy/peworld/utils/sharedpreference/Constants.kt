@@ -5,7 +5,7 @@ class Constants {
         const val KEY_TOKEN = "KEY_TOKEN"
         const val KEY_ID_ACCOUNT = "KEY_ID_ACCOUNT"
         const val KEY_ID_USER = "KEY_ID_USER"
-        const val USERNAME = "KEY_ID_USER"
+        const val USERNAME = "USERNAME"
         const val LOGIN = "LOGIN"
     }
 }

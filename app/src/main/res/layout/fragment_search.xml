@@ -13,20 +13,40 @@
             android:background="@color/background_gray"
             tools:context=".search.SearchFragment">
 
-            <EditText
-                android:id="@+id/et_search"
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:elevation="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@color/purple_500"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    />
+            </com.google.android.material.appbar.AppBarLayout>
+            <SearchView
+                android:id="@+id/sv_search"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="70dp"
                 android:layout_marginEnd="5dp"
                 android:background="@drawable/bg_search"
-                android:drawableStart="@drawable/ic_search"
-                android:elevation="10dp"
+                android:elevation="5dp"
+                android:queryHint="Cari Pekerja..."
                 android:ems="16"
-                android:hint="Cari Pekerja"
+                app:searchIcon="@drawable/ic_search"
                 android:inputType="text"
-                android:padding="13dp"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="1dp"
                 android:textColor="@color/gray_2"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toStartOf="@id/btn_filter"
@@ -44,18 +64,18 @@
                 android:paddingHorizontal="15dp"
                 android:paddingVertical="13dp"
                 android:src="@drawable/ic_list"
-                app:layout_constraintBottom_toBottomOf="@id/et_search"
+                app:layout_constraintBottom_toBottomOf="@id/sv_search"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/et_search"
-                app:layout_constraintTop_toTopOf="@id/et_search" />
+                app:layout_constraintStart_toEndOf="@id/sv_search"
+                app:layout_constraintTop_toTopOf="@id/sv_search" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_worker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="40dp"
-                app:layout_constraintTop_toBottomOf="@id/et_search" />
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/sv_search" />
 
             <ProgressBar
                 android:id="@+id/progress_bar"

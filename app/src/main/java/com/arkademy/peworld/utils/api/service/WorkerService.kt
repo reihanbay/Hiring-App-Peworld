@@ -12,8 +12,13 @@ interface WorkerService {
     suspend fun getAllWorker(): GetWorkerResponse
 
     @GET("worker/")
-    suspend fun getAllWorker(@Query("search[jobTitle]") title: String): GetWorkerResponse
+    suspend fun getAllWorker(@Query("sort") sort: String?, @Query("order") order: String?): GetWorkerResponse
 
+    @GET("worker/")
+    suspend fun getAllWorker(@Query("search[jobTitle]") title: String?): GetWorkerResponse
+
+    @GET("worker/")
+    suspend fun getAllWorker(@Query("search[statusJob]") title: String?, @Query("sort") sort: String?, @Query("order") order: String? ): GetWorkerResponse
 
     @GET("worker/{id}")
     suspend fun getWorkerById(@Path("id") id: Int): GetWorkerByIdResponse
@@ -31,6 +36,19 @@ interface WorkerService {
             @Part("workPlace") workPlace: RequestBody?,
             @Part("description") description: RequestBody?,
             @Part("idAccount") idAccount: RequestBody?,
+            @Part image: MultipartBody.Part?
+    ): PostProfileResponse
+
+    @Multipart
+    @PATCH("worker/{id}")
+    suspend fun patchWorker(
+            @Path("id") id: Int?,
+            @Part("nameWorker") nameWorker: RequestBody?,
+            @Part("jobTitle") jobTitle: RequestBody?,
+            @Part("statusJob") statusJob: RequestBody?,
+            @Part("city") city: RequestBody?,
+            @Part("workPlace") workPlace: RequestBody?,
+            @Part("description") description: RequestBody?,
             @Part image: MultipartBody.Part?
     ): PostProfileResponse
 }

@@ -38,7 +38,7 @@ class HomeViewModel: ViewModel(),CoroutineScope {
             if (response is GetWorkerResponse){
                 isEmptyAndroid.value = response.success
                 val list = response.data.map {
-                    WorkerModel(it.idWorker, it.image.orEmpty(),it.name.orEmpty(), it.title.orEmpty(), it.skill.orEmpty())
+                    WorkerModel(it.idWorker, it.image.orEmpty(),it.name.orEmpty(), it.title.orEmpty(), it.statusJob.orEmpty(), it.city.orEmpty(), it.skill.orEmpty())
                 }
                 workerAndroidLiveData.value = list
             }
@@ -59,7 +59,7 @@ class HomeViewModel: ViewModel(),CoroutineScope {
 //                if (response.message == "jwt malformed")
                 isEmptyWeb.value = response.success
                 val list = response.data.map {
-                    WorkerModel(it.idWorker, it.image.orEmpty(),it.name.orEmpty(), it.title.orEmpty(), it.skill.orEmpty())
+                    WorkerModel(it.idWorker, it.image.orEmpty(),it.name.orEmpty(), it.title.orEmpty(), it.statusJob.orEmpty(), it.city.orEmpty(), it.skill.orEmpty())
                 }
                 workerWebLiveData.value = list
             }

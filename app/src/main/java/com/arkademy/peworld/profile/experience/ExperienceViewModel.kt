@@ -2,7 +2,7 @@ package com.arkademy.peworld.profile.experience
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.arkademy.peworld.utils.api.response.ExperienceResponse
+import com.arkademy.peworld.utils.api.response.ListExperienceResponse
 import com.arkademy.peworld.utils.api.service.ExperienceService
 import com.arkademy.peworld.utils.model.ExperienceModel
 import kotlinx.coroutines.*
@@ -29,8 +29,8 @@ class ExperienceViewModel: ViewModel(), CoroutineScope {
                     e.printStackTrace()
                 }
             }
-            if (response is ExperienceResponse) {
-                if(response.data == null) {
+            if (response is ListExperienceResponse) {
+                if(response.data == null || response.message == "There is no Experience on list") {
                     isEmptyLiveData.value = true
                 } else {
                     isEmptyLiveData.value = false

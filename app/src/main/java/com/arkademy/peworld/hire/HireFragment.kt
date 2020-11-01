@@ -1,5 +1,6 @@
 package com.arkademy.peworld.hire
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,11 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arkademy.peworld.R
-import com.arkademy.peworld.databinding.ActivityLoginBinding.bind
-import com.arkademy.peworld.databinding.ActivityLoginBinding.inflate
 import com.arkademy.peworld.databinding.FragmentHireBinding
-import com.arkademy.peworld.databinding.FragmentHomeBinding
-import com.arkademy.peworld.profile.ProfileWorkerActivity
 import com.arkademy.peworld.utils.api.ApiClient
 import com.arkademy.peworld.utils.api.service.HireService
 import com.arkademy.peworld.utils.recycler.RecyclerHireAdapter
@@ -31,6 +28,9 @@ class HireFragment : Fragment() {
     private lateinit var viewModel: HireViewModel
     private lateinit var recyclerView : RecyclerHireAdapter
     private lateinit var sharedPref : PreferenceHelper
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -42,6 +42,16 @@ class HireFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_hire, container, false)
         sharedPref = PreferenceHelper(activity as AppCompatActivity)
         viewModel = ViewModelProvider(activity as AppCompatActivity).get(HireViewModel::class.java)
+
+        val toolbar = binding.toolbarMain
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+
+        val supportActionBar = (activity as AppCompatActivity).supportActionBar
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setDisplayShowTitleEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setTitle("Offering")
+
         val service = ApiClient.getApiClientToken(activity as AppCompatActivity)?.create(HireService::class.java)
         if (service != null) {
             viewModel.setService(service)
@@ -52,6 +62,15 @@ class HireFragment : Fragment() {
         subscribeLiveData()
         setRecyclerView()
         return binding.root
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        sharedPref = PreferenceHelper(activity as AppCompatActivity)
+        val id = sharedPref.getString(Constants.KEY_ID_USER)
+        if(resultCode == Activity.RESULT_OK && requestCode == DetailHireActivity.CODE_CONFIRM) {
+            viewModel.getHireList(id.toString().toInt())
+        }
     }
 
     private fun subscribeLiveData() {
@@ -75,9 +94,8 @@ class HireFragment : Fragment() {
             override fun OnClick(id: Int?) {
                 Toast.makeText(activity, id.toString(), Toast.LENGTH_SHORT).show()
                 val intent = Intent(activity, DetailHireActivity::class.java)
-
                 intent.putExtra("KEY_ID_HIRE", id.toString())
-                startActivity(intent)
+                startActivityForResult(intent, DetailHireActivity.CODE_CONFIRM)
             }
         })
         binding.rvHire.adapter = recyclerView

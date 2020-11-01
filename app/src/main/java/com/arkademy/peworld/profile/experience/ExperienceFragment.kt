@@ -1,5 +1,7 @@
 package com.arkademy.peworld.profile.experience
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,8 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arkademy.peworld.R
 import com.arkademy.peworld.databinding.FragmentExperienceBinding
+import com.arkademy.peworld.profile.form.FormExperienceActivity
 import com.arkademy.peworld.utils.api.ApiClient
 import com.arkademy.peworld.utils.api.service.ExperienceService
+import com.arkademy.peworld.utils.model.ExperienceModel
 import com.arkademy.peworld.utils.sharedpreference.Constants
 import com.arkademy.peworld.utils.sharedpreference.PreferenceHelper
 
@@ -42,14 +46,11 @@ class ExperienceFragment : Fragment() {
         val id = (activity as AppCompatActivity).intent.getStringExtra("KEY_ID_WORKER")
 
         if(id != null) {
-            Log.d("checking", id.toString())
             viewModel.getExperience(id.toInt())
         } else {
             val idUser = sharedPref.getString(Constants.KEY_ID_USER)
             if (idUser != null) {
                 viewModel.getExperience(idUser.toString().toInt())
-                Log.d("checking", idUser.toString())
-
             }
         }
         subsribceLiveData()
@@ -72,8 +73,60 @@ class ExperienceFragment : Fragment() {
         })
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == FormExperienceActivity.CODE_CONFIRM){
+            val service = ApiClient.getApiClientToken(activity as AppCompatActivity)?.create(ExperienceService::class.java)
+            if (service != null) {
+                viewModel.setServiceExperience(service)
+            }
+
+            val id = (activity as AppCompatActivity).intent.getStringExtra("KEY_ID_WORKER")
+
+            if(id != null) {
+                viewModel.getExperience(id.toInt())
+            } else {
+                val idUser = sharedPref.getString(Constants.KEY_ID_USER)
+                if (idUser != null) {
+                    viewModel.getExperience(idUser.toString().toInt())
+                }
+            }
+            subsribceLiveData()
+            setRecyclerView()
+        }
+    }
     private fun setRecyclerView(){
-        recyclerView = ExperienceAdapter(arrayListOf())
+        val id = (activity as AppCompatActivity).intent.getStringExtra("KEY_ID_WORKER")
+        sharedPref = PreferenceHelper(activity as AppCompatActivity)
+        val idUser = sharedPref.getString(Constants.KEY_ID_USER)
+        var code : String? = null
+        if (id != null) {
+            code = "WORKER"
+        } else {
+            if(idUser != null) {
+                code = "USER"
+            } else {
+                code = null
+            }
+        }
+        recyclerView = ExperienceAdapter(code, arrayListOf(), object : ExperienceAdapter.OnClickViewListener{
+            override fun OnClick(data: ExperienceModel?) {
+                if (data != null) {
+                    val intent = Intent(activity, FormExperienceActivity::class.java)
+                    intent.putExtra("CODE_EXPERIENCE", "DETAIL")
+                    intent.putExtra("DATA_PARCELIZE", data)
+                    intent.putExtra("CODE_LAYOUT", code)
+                    startActivityForResult(intent, FormExperienceActivity.CODE_CONFIRM)
+                }
+            }
+
+            override fun OnClickAdd() {
+                val intent = Intent(activity, FormExperienceActivity::class.java)
+                intent.putExtra("CODE_EXPERIENCE", "ADD")
+                startActivityForResult(intent, FormExperienceActivity.CODE_CONFIRM)
+            }
+
+        })
         binding.rvExperience.adapter = recyclerView
         binding.rvExperience.layoutManager = LinearLayoutManager(activity,RecyclerView.VERTICAL, false)
     }

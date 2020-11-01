@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Peworld"
         android:usesCleartextTraffic="true">
-        <activity android:name=".hire.DetailHireActivity"></activity>
+        <activity android:name=".profile.form.FormPortfolioActivity"></activity>
+        <activity android:name=".profile.form.FormExperienceActivity" />
+        <activity android:name=".profile.form.FormPortfolioActivity" />
+        <activity android:name=".hire.DetailHireActivity" />
         <activity android:name=".profile.form.FormProfileActivity" />
         <activity android:name=".profile.ProfileWorkerActivity" />
         <activity android:name=".home.NotifyActivity" />
@@ -25,15 +28,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>
