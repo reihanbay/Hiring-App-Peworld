@@ -7,23 +7,28 @@
 
 ## Peworld
 Peworld is a android application to make jobseeking process so simple. Jobseeker can make their profile as excellent as ther want .
+
 This is a repository of Peworld Hire Job for Jobseeker. It is build using Android Studio with program languange Kotlin, and Fetch API with retrofit + coroutine
 
 ## Preview
 Login & Register Page
 <img src="Screenshot/Logres.png">
 
-Home 
-<img src="Screenshot/Home.jpg">
+#### Home 
 
-Search
-<img src="Screenshot/search.jpg">
+<img src="Screenshot/Home.jpg" height="1773px" width="720>
 
-Offering/Hire
-<img src="Screenshot/offering_hire.jpg">
+#### Search
 
-Profile
-<img src="Screenshot/Profile.png">
+<img src="Screenshot/search.jpg" height="1773px" width="720>
 
-Edit Profile
+#### Offering/Hire
+
+<img src="Screenshot/offering_hire.jpg" height="1773px" width="720>
+
+#### Profile
+
+<img src="Screenshot/Profile.png" height="1773px" width="720>
+
+#### Edit Profile
 <img src="Screenshot/EditProfile.png">
