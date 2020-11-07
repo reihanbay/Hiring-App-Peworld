@@ -15,14 +15,14 @@ This is a repository of Peworld Hire Job for Jobseeker. It is build using Androi
 <img src="Screenshot/Logres.png">
 
 #### Home 
-<img src="Screenshot/Home.jpg" height="1773" width="720>
+<img src="Screenshot/Home.jpg" width="360">
 
 #### Search
-<img src="Screenshot/search.jpg" height="1773" width="720>
+<img src="Screenshot/search.jpg"  width="360">
 
 #### Offering/Hire
 
-<img src="Screenshot/offering_hire.jpg" height="1773" width="720>
+<img src="Screenshot/offering_hire.jpg" width="360">
 
 #### Profile
 
