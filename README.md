@@ -14,13 +14,13 @@ Login & Register Page
 <img src="Screenshot/Logres.png">
 
 Home 
-<img src="Screenshot/Home.png">
+<img src="Screenshot/Home.jpg">
 
 Search
-<img src="Screenshot/search.png">
+<img src="Screenshot/search.jpg">
 
 Offering/Hire
-<img src="Screenshot/offering_hire.png">
+<img src="Screenshot/offering_hire.jpg">
 
 Profile
 <img src="Screenshot/Profile.png">
