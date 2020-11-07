@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Peworld"
         android:usesCleartextTraffic="true">
-        <activity android:name=".profile.form.FormPortfolioActivity"></activity>
         <activity android:name=".profile.form.FormExperienceActivity" />
         <activity android:name=".profile.form.FormPortfolioActivity" />
         <activity android:name=".hire.DetailHireActivity" />
